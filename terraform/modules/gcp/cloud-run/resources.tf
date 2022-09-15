@@ -9,12 +9,6 @@ resource "google_cloud_run_service" "default" {
     labels = {
       "env" : var.env
     }
-    annotations = {
-      "run.googleapis.com/client-name"           = "terraform"
-      "run.googleapis.com/ingress"               = var.service_ingress
-      "run.googleapis.com/execution-environment" = var.service_execution_environment
-      "run.googleapis.com/cpu-throttling"        = var.service_throttle_cpu
-    }
   }
 
   template {
@@ -22,6 +16,10 @@ resource "google_cloud_run_service" "default" {
       annotations = {
         "autoscaling.knative.dev/maxScale" = var.service_max_instances
         "autoscaling.knative.dev/minScale" = var.service_min_instances
+		"run.googleapis.com/client-name"           = "terraform"
+		"run.googleapis.com/ingress"               = var.service_ingress
+		"run.googleapis.com/execution-environment" = var.service_execution_environment
+		"run.googleapis.com/cpu-throttling"        = var.service_throttle_cpu
       }
     }
 
