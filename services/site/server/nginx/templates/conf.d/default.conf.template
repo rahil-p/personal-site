@@ -10,7 +10,6 @@ server {
     # Sub
     sub_filter_once                     off;
     sub_filter_last_modified            off;
-    sub_filter_types                    text/html;
     #
     sub_filter                          **CSP_SCRIPT_NONCE**                $cspScriptNonce;
     sub_filter                          **CSP_STYLE_NONCE**                 $cspStyleNonce;
