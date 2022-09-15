@@ -12,7 +12,8 @@ module "lb-http" {
 
   name                            = "gcp-site-m-xlb-https"
   ssl                             = true
-  managed_ssl_certificate_domains = [""]
+  managed_ssl_certificate_domains = ["rahil-p.com", "www.rahil-p.com"]
+  use_ssl_certificates            = false
   https_redirect                  = true
   quic                            = true
 
