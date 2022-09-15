@@ -1,7 +1,7 @@
 # TODO: support non-production environments by
-#  - providing custom url map
 #  - accepting workspaces grouped by environment
 #  - accepting backend configurations for each environment (especially IAP)
+#  - providing custom url map
 #  - providing non-production urls to `managed_ssl_certificate_domains`
 
 module "lb-http" {

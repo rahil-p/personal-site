@@ -10,8 +10,9 @@ resource "google_cloud_run_service" "default" {
       "env" : var.env
     }
     annotations = {
-      "run.googleapis.com/client-name" = "terraform"
-      "run.googleapis.com/ingress"     = var.service_ingress
+      "run.googleapis.com/launch-stage" = "BETA"
+      "run.googleapis.com/client-name"  = "terraform"
+      "run.googleapis.com/ingress"      = var.service_ingress
     }
   }
 
