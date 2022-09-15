@@ -18,12 +18,12 @@ module "lb-http" {
 
   backends = {
     default = {
-      description = null
-      enable_cdn  = true
-	  custom_request_headers = null
-	  custom_response_headers = null
-	  security_policy = null
-      groups = local.groups
+      description             = null
+      enable_cdn              = true
+      custom_request_headers  = null
+      custom_response_headers = null
+      security_policy         = null
+      groups                  = local.groups
 
       iap_config = {
         enable               = false

@@ -11,15 +11,20 @@ resource "google_cloud_run_service" "default" {
     }
     annotations = {
       "run.googleapis.com/client-name"           = "terraform"
-	  "run.googleapis.com/ingress" = var.service_ingress
+      "run.googleapis.com/ingress"               = var.service_ingress
       "run.googleapis.com/execution-environment" = var.service_execution_environment
       "run.googleapis.com/cpu-throttling"        = var.service_throttle_cpu
-      "autoscaling.knative.dev/maxScale"         = var.service_max_instances
-      "autoscaling.knative.dev/minScale"         = var.service_min_instances
     }
   }
 
   template {
+    metadata {
+      annotations = {
+        "autoscaling.knative.dev/maxScale" = var.service_max_instances
+        "autoscaling.knative.dev/minScale" = var.service_min_instances
+      }
+    }
+
     spec {
       timeout_seconds       = var.service_timeout_seconds
       container_concurrency = var.container_concurrency
@@ -63,6 +68,6 @@ resource "google_compute_region_network_endpoint_group" "default" {
   region                = var.location
 
   cloud_run {
-	service = google_cloud_run_service.default.name
+    service = google_cloud_run_service.default.name
   }
 }

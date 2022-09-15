@@ -53,9 +53,9 @@ variable "service_max_instances" {
 }
 
 variable "service_ingress" {
-  type = string
+  type        = string
   description = ""
-  default = "all"
+  default     = "all"
 }
 
 variable "service_execution_environment" {
