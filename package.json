@@ -1,0 +1,119 @@
+{
+	"name": "personal-website",
+	"version": "0.1.0",
+	"description": "Personal website at rahil-p.com",
+	"homepage": "https://rahil-p.com",
+	"repository": "rahil-p/personal-website.git",
+	"bugs": "https://github.com/rahil-p/personal-website/issues",
+	"author": {
+		"name": "Rahil Patel",
+		"url": "https://github.com/rahil-p"
+	},
+	"license": "MIT",
+	"packageManager": "yarn@3.2.3",
+	"private": true,
+	"workspaces": [
+		"packages/*",
+		"services/*"
+	],
+	"scripts": {
+		"build": "yarn workspaces foreach --topological-dev --exclude personal-website ${args:-} run build",
+		"clean": "yarn run clean:modules",
+		"clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+		"depcheck": "yarn workspaces foreach --verbose ${args:-} exec depcheck",
+		"lint": "yarn run lint:syncpack && yarn run lint:code",
+		"lint:code": "yarn workspaces foreach --exclude personal-website --verbose ${args:-} run lint",
+		"lint:syncpack": "yarn exec syncpack format",
+		"list": "yarn workspaces foreach --exclude personal-website --parallel ${args:-} node -e \"const p = require('./package.json'); console.log(JSON.stringify({name: p.name, version: p.version, location: path.relative('$(pwd)', process.cwd()), private: !!p.private}));\" | sed 's/.*{/{/' | grep '^{' | jq -s"
+	},
+	"devDependencies": {
+		"@rahil-p/eslint-config-base": "^1.0.2",
+		"@rahil-p/eslint-config-react": "^1.0.2",
+		"@rahil-p/eslint-config-typescript": "^1.0.2",
+		"depcheck": "^1.4.3",
+		"eslint": "^8.22.0",
+		"prettier": "^2.7.1",
+		"syncpack": "^6.2.1",
+		"typescript": "^4.7.4",
+		"v8-compile-cache": "^2.3.0"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"es6": true,
+			"node": true
+		},
+		"extends": [
+			"@rahil-p/eslint-config-base"
+		],
+		"ignorePatterns": [
+			"**/build/**/*",
+			"**/dist/**/*"
+		],
+		"overrides": [
+			{
+				"files": [
+					"**/*.ts"
+				],
+				"extends": [
+					"@rahil-p/eslint-config-base",
+					"@rahil-p/eslint-config-typescript"
+				],
+				"parserOptions": {
+					"project": "./tsconfig.base.json"
+				}
+			},
+			{
+				"files": [
+					"**/*.tsx"
+				],
+				"extends": [
+					"@rahil-p/eslint-config-base",
+					"@rahil-p/eslint-config-typescript",
+					"@rahil-p/eslint-config-react"
+				]
+			}
+		]
+	},
+	"syncpack": {
+		"dev": true,
+		"peer": true,
+		"prod": true,
+		"resolutions": true,
+		"indent": "\t",
+		"sortAz": [
+			"scripts",
+			"resolutions",
+			"dependencies",
+			"optionalDependencies",
+			"peerDependencies",
+			"devDependencies",
+			"protobufDependencies"
+		],
+		"sortFirst": [
+			"name",
+			"version",
+			"description",
+			"type",
+			"main",
+			"files",
+			"bin",
+			"homepage",
+			"repository",
+			"bugs",
+			"author",
+			"contributors",
+			"license",
+			"packageManager",
+			"private",
+			"publishConfig",
+			"workspaces",
+			"scripts",
+			"resolutions",
+			"dependencies",
+			"optionalDependencies",
+			"peerDependencies",
+			"devDependencies"
+		]
+	}
+}

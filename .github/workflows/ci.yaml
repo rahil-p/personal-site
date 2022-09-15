@@ -1,0 +1,16 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '16.13.2'
+  SENTRY_ORG: 'rahil-p'
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo init

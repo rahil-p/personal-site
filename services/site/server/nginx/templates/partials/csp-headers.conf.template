@@ -1,0 +1,1 @@
+add_header Content-Security-Policy       "${SITE_CONTENT_SECURITY_POLICY}";

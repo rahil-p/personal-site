@@ -1,0 +1,16 @@
+name: checks
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+env:
+  NODE_VERSION: '16.13.2'
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo init

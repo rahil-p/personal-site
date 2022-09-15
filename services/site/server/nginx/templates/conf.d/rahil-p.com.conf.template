@@ -1,0 +1,98 @@
+# handles the primary site
+server {
+    listen                              '${SITE_PORT}' default_server;
+    root                                /var/www/rahil-p.com;
+
+    # Module Settings
+    # Brotli
+    brotli                              on;
+    brotli_static                       on;
+    # Sub
+    sub_filter_once                     off;
+    sub_filter_last_modified            off;
+    sub_filter_types                    text/html;
+    #
+    sub_filter                          **CSP_SCRIPT_NONCE**                $cspScriptNonce;
+    sub_filter                          **CSP_STYLE_NONCE**                 $cspStyleNonce;
+    sub_filter                          **SITE_URL**                        '${SITE_URL}';
+    sub_filter                          **GOOGLE_TAGMANAGER_ID**            '${GOOGLE_TAGMANAGER_ID}';
+    sub_filter                          **SENTRY_PROJECT**                  '${SENTRY_PROJECT}';
+    sub_filter                          **SENTRY_DSN**                      '${SENTRY_DSN}';
+    sub_filter                          **SENTRY_ENVIRONMENT**              '${SENTRY_ENVIRONMENT}';
+    sub_filter                          **CONTACT_EMAIL**                   '${CONTACT_EMAIL}';
+    sub_filter                          **SOCIAL_GITHUB_URL**               '${SOCIAL_GITHUB_URL}';
+    sub_filter                          **SOCIAL_STACKOVERFLOW_URL**        '${SOCIAL_STACKOVERFLOW_URL}';
+    sub_filter                          **SOCIAL_TWITTER_ID**               '${SOCIAL_TWITTER_ID}';
+    sub_filter                          **SOCIAL_TWITTER_URL**              '${SOCIAL_TWITTER_URL}';
+
+    # Errors
+    include                             /etc/nginx/partials/errors.conf;
+
+    location / {
+        set_secure_random_alphanum      $cspScriptNonce 32;
+        set_secure_random_alphanum      $cspStyleNonce  32;
+
+        expires                         epoch;
+        include                         /etc/nginx/partials/default-headers.conf;
+        include                         /etc/nginx/partials/csp-headers.conf;
+        # TODO: Access-Control-Allow-Origin
+
+        try_files                       $uri $uri/ $uri.html /index.html;
+    }
+
+    # handles the service worker for the site (should not be versioned with a hash)
+    location = /scripts/service-worker.js {
+        expires                         epoch; # never cached
+        include                         /etc/nginx/partials/default-headers.conf;
+        add_header                      Service-Worker-Allowed      '/';
+
+        try_files                       $uri =404;
+    }
+
+    location = /favicon.ico {
+        expires                         epoch; # never cached
+        include                         /etc/nginx/partials/default-headers.conf;
+
+        root                            /var/www/rahil-p.com/images/app;
+        try_files                       $uri =404;
+    }
+
+    location ~ ^/(live|ready)z {
+        access_log                      off;
+        return 200;
+    }
+
+    # handles static assets (these will generally not be versioned with a hash)
+    location ~ ^/(?:images)/ {
+        expires                         modified +10d; # may be cached until 10 days after the container is created (nonversioned)
+        add_header                      Cache-Control               'public, proxy-revalidate';
+        add_header                      Vary                        'Accept-Encoding';
+        include                         /etc/nginx/partials/default-headers.conf;
+
+        try_files                       $uri =404;
+    }
+
+    # handles assets, scripts, & stylesheets (these should generally be versioned with a hash)
+    location ~ ^/(?:assets|scripts|styles)/ {
+        expires                         180d; # may be cached for 180 days after the request is made (versioned)
+        add_header                      Cache-Control               'public, proxy-revalidate';
+        add_header                      Vary                        'Accept-Encoding';
+        include                         /etc/nginx/partials/default-headers.conf;
+
+        try_files                       $uri =404;
+    }
+
+    location ~ ^/.+\..+$ {
+        set_secure_random_alphanum      $cspScriptNonce 32;
+        set_secure_random_alphanum      $cspStyleNonce  32;
+
+        expires                         $expires;
+        add_header                      Cache-Control               $cache_response_extra;
+        add_header                      Vary                        $vary;
+        include                         /etc/nginx/partials/default-headers.conf;
+        include                         /etc/nginx/partials/csp-headers.conf;
+
+        index                           index.html;
+        try_files                       $uri $uri/ $uri.html =404;
+    }
+}

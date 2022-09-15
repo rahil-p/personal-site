@@ -1,0 +1,11 @@
+extends abstract/base
+
+block defines
+	-
+		const metadata = {
+			'rp:template:error:status': page.data.errorStatus,
+			'rp:template:error:message': page.data.errorMessage,
+		};
+
+block meta-extra
+	meta(name='robots' content='noindex, nofollow, nosnippet')

@@ -1,0 +1,28 @@
+@mixin ease-fn-pair($name, $cbx1, $cby1, $cbx2, $cby2) {
+	--#{$name}: cubic-bezier(#{$cbx1}, #{$cby1}, #{$cbx2}, #{$cby2});
+	--#{$name}-inverse: cubic-bezier(#{1 - $cbx2}, #{1 - $cby2}, #{1 - $cbx1}, #{1 - $cby1});
+}
+
+:root {
+	--border-radius-0: 6px;
+	--border-radius-1: 10px;
+	--footer-height: 6rem;
+	--padding-h-main: max(0.75rem, 6vw);
+	--ease-time: 0.15s;
+	@include ease-fn-pair(ease-fn, 0.17, 0.67, 0.83, 0.67);
+	@include ease-fn-pair(ease-fn-slide, 0.645, 0.045, 0.355, 1);
+	@include ease-fn-pair(ease-cubic, 0.32, 0, 0.67, 0);
+	@include ease-fn-pair(ease-sine, 0.12, 0, 0.39, 0);
+}
+
+html,
+body {
+	font-family: _is, sans-serif;
+	color: #ffffff;
+	background-color: #000000;
+	scrollbar-color: light;
+}
+
+body {
+	min-width: 250px;
+}

@@ -1,0 +1,65 @@
+{
+	"name": "Rahil Patel",
+	"version": "",
+	"short_name": "Rahil Patel",
+	"description": "I enjoy designing solutions and making them happen with code.",
+	"dir": "ltr",
+	"lang": "en-US",
+	"display": "standalone",
+	"orientation": "natural",
+	"scope": "/",
+	"start_url": "/?hs=1",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"categories": [],
+	"icons": [
+		{
+			"src": "./public/images/app/app-icon-144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/images/app/app-icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/images/app/app-icon-256.png",
+			"sizes": "256x256",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/images/app/app-icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "./public/images/app/app-icon-144.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "./public/images/app/app-icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose":  "any"
+		},
+		{
+			"src": "./public/images/app/app-icon-256.png",
+			"sizes": "256x256",
+			"type": "image/png",
+			"purpose":  "any"
+		},
+		{
+			"src": "./public/images/app/app-icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose":  "any"
+		}
+	]
+}

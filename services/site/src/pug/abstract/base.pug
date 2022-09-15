@@ -1,0 +1,39 @@
+doctype html
+html(lang='en' dir='ltr')
+	block defines
+	head
+		meta(charset='utf-8')
+		include ../components/google-tagmanager-script
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+
+		title #{page.title ? `${page.title} · ${app.name}` : app.name}
+		if page.description
+			meta(name='description' content=page.description)
+
+		block meta-extra
+
+		//- Social Metadata
+		include ../components/social
+
+		//- Metadata Template
+		include ../components/meta-template
+
+		//- Web App Metadata (Links)
+		include ../components/web-app
+
+		//- Preloads, Preconnects, & DNS Prefetches
+		block resource-hints
+			//- Google Tag Manager
+			link(
+				rel='dns-prefetch preconnect'
+				href='https://www.googletagmanager.com'
+			)
+			link(
+				rel='dns-prefetch preconnect'
+				href='https://analytics.google.com'
+			)
+
+	body
+		include ../components/google-tagmanager-iframe
+
+		#root

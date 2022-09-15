@@ -1,0 +1,19 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx"
+	],
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "dist",
+		"typeRoots": ["./src/types", "./node_modules/@types", "../node_modules/@types"],
+		"jsx": "react-jsx",
+		"jsxImportSource": "@emotion/react",
+		"composite": true,
+		"inlineSources": true,
+		"sourceRoot": "/",
+		"types": ["node"]
+	},
+	"references": []
+}

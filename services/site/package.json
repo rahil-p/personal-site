@@ -1,0 +1,197 @@
+{
+	"name": "@rahil-p/site",
+	"version": "0.1.0",
+	"description": "Personal website at rahil-p.com",
+	"main": "index.js",
+	"files": [
+		"src/**/*",
+		"webpack/**/*",
+		"package.json",
+		"tsconfig.json",
+		"webpack.config.js"
+	],
+	"homepage": "https://rahil-p.com",
+	"repository": "rahil-p/personal-website.git",
+	"bugs": "https://github.com/rahil-p/personal-website/issues",
+	"author": {
+		"name": "Rahil Patel",
+		"url": "https://github.com/rahil-p"
+	},
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"analyze": "webpack-bundle-analyzer dist/rahil-p.com/bundle.stats.json",
+		"build": "exit 0",
+		"bundle": "webpack",
+		"lint": "yarn run lint:style && yarn run lint:code",
+		"lint:code": "yarn exec eslint --fix --ignore-pattern '/dist/' .",
+		"lint:style": "yarn run lint:style-scss && yarn run lint:style-tsx",
+		"lint:style-scss": "stylelint --fix **/*.scss",
+		"lint:style-tsx": "stylelint --fix **/*.tsx",
+		"test": "exit 0"
+	},
+	"dependencies": {
+		"@emotion/cache": "^11.10.3",
+		"@emotion/react": "^11.10.4",
+		"@sentry/integrations": "^7.12.1",
+		"@sentry/react": "^7.12.1",
+		"@sentry/tracing": "^7.12.1",
+		"@sentry/webpack-plugin": "^1.19.0",
+		"@svgr/webpack": "^6.3.1",
+		"@types/react": "^18.0.18",
+		"@types/react-dom": "^18.0.6",
+		"@types/react-helmet": "^6.1.5",
+		"@types/react-transition-group": "^4.4.5",
+		"@types/stylis": "^4.0.2",
+		"@vue/preload-webpack-plugin": "^2.0.0",
+		"@webdiscus/pug-loader": "^2.9.0",
+		"autoprefixer": "^10.4.8",
+		"copy-webpack-plugin": "^9.1.0",
+		"css-loader": "^6.7.1",
+		"cssnano": "^5.1.13",
+		"cssnano-preset-advanced": "^5.3.8",
+		"dotenv": "^16.0.2",
+		"html-webpack-plugin": "^5.5.0",
+		"json-minimizer-webpack-plugin": "^3.3.0",
+		"mini-css-extract-plugin": "^2.6.1",
+		"postcss": "^8.4.16",
+		"postcss-loader": "^6.2.1",
+		"pug": "^3.0.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-helmet": "^6.1.0",
+		"react-router-dom": "^6.3.0",
+		"react-transition-group": "^4.4.5",
+		"sass": "^1.54.9",
+		"sass-loader": "^12.6.0",
+		"script-ext-html-webpack-plugin": "^2.1.5",
+		"string-replace-loader": "^3.1.0",
+		"stylis": "^4.1.1",
+		"terser-webpack-plugin": "^5.3.1",
+		"ts-loader": "^9.3.1",
+		"typescript": "^4.7.4",
+		"webpack": "^5.74.0",
+		"webpack-bundle-analyzer": "^4.6.1",
+		"webpack-cli": "^4.10.0",
+		"webpack-remove-empty-scripts": "^0.8.1",
+		"webpack-webmanifest-loader": "^2.0.2",
+		"workbox-background-sync": "^6.5.4",
+		"workbox-cacheable-response": "^6.5.4",
+		"workbox-core": "^6.5.4",
+		"workbox-google-analytics": "^6.5.4",
+		"workbox-precaching": "^6.5.4",
+		"workbox-routing": "^6.5.4",
+		"workbox-strategies": "^6.5.4",
+		"workbox-webpack-plugin": "^6.5.4"
+	},
+	"devDependencies": {
+		"@rahil-p/stylelint-config-base": "^1.0.2",
+		"@rahil-p/stylelint-config-js": "^1.0.2",
+		"@rahil-p/stylelint-config-scss": "^1.0.2",
+		"@types/node": "^18.7.14",
+		"stylelint": "^14.11.0"
+	},
+	"browserslist": [
+		"> 0.5% in US",
+		"not ie > 0",
+		"not ie_mob > 0"
+	],
+	"eslintConfig": {
+		"parserOptions": {
+			"project": "./tsconfig.json"
+		},
+		"env": {
+			"es6": true,
+			"browser": true
+		},
+		"rules": {
+			"import/order": [
+				1,
+				{
+					"groups": [
+						[
+							"builtin",
+							"external",
+							"internal"
+						],
+						[
+							"parent",
+							"sibling",
+							"index",
+							"unknown"
+						],
+						"type"
+					],
+					"pathGroups": [
+						{
+							"pattern": "@rahil-p/**",
+							"group": "external",
+							"position": "after"
+						},
+						{
+							"pattern": "react",
+							"group": "external",
+							"position": "before"
+						}
+					],
+					"pathGroupsExcludedImportTypes": [
+						"react",
+						"type"
+					],
+					"newlines-between": "always"
+				}
+			],
+			"react/no-unknown-property": [
+				2,
+				{
+					"ignore": [
+						"css"
+					]
+				}
+			]
+		},
+		"overrides": [
+			{
+				"files": [
+					"webpack*.js",
+					"webpack/**/*.js"
+				],
+				"env": {
+					"es6": false,
+					"browser": false
+				},
+				"extends": [
+					"@rahil-p/eslint-config-base"
+				]
+			}
+		]
+	},
+	"stylelint": {
+		"extends": [
+			"@rahil-p/stylelint-config-base"
+		],
+		"ignoreFiles": [
+			"**/dist/**/*"
+		],
+		"overrides": [
+			{
+				"files": [
+					"**/*.scss"
+				],
+				"extends": [
+					"@rahil-p/stylelint-config-base",
+					"@rahil-p/stylelint-config-scss"
+				]
+			},
+			{
+				"files": [
+					"**/*.tsx"
+				],
+				"extends": [
+					"@rahil-p/stylelint-config-base",
+					"@rahil-p/stylelint-config-js"
+				]
+			}
+		]
+	}
+}

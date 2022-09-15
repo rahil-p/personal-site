@@ -1,0 +1,21 @@
+/*! The Dank Mono (v0.491) font is subject to a EULA. A user-licence can be acquired at: https://dank.sh. © 2018 Phil Plückthun. All Rights Reserved. */
+
+@font-face {
+	font: {
+		family: '_dm';
+		weight: 400;
+		style: normal;
+		display: swap;
+	}
+	src: local('☺'), url('../private/fonts/dm-regular.woff2') format('woff2');
+}
+
+@font-face {
+	font: {
+		family: '_dm';
+		weight: 400;
+		style: italic;
+		display: swap;
+	}
+	src: local('☺'), url('../private/fonts/dm-regular-italic.woff2') format('woff2');
+}

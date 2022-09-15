@@ -1,0 +1,24 @@
+//- Android
+meta(name='application-name' content=app.name)
+meta(name='theme-color' content=app.theme_color)
+meta(name='mobile-web-app-capable' content='yes')
+//- iOS
+meta(name='apple-mobile-web-app-title' content=app.name)
+meta(name='apple-mobile-web-app-capable' content='yes')
+meta(name='apple-mobile-web-app-status-bar-style' content='black-translucent')
+//- Manifest TODO
+link(rel='manifest' href=require('../../manifest.json'))
+//- Icons (standard)
+link(rel='icon' href=require('../../public/images/app/icon.svg?file'))
+link(rel='icon' href=require('../../public/images/app/favicon.ico') sizes='any')
+//- Icons (iOS)
+each v in app.touchIcons
+	link(rel='apple-touch-icon' href=require(`../../public/images/app/app-icon-transparent-${v}.png`) sizes=`${v}x${v}`)
+//- Icons (iOS startup)
+each v in app.startup
+	each o in ['portrait', 'landscape']
+		link(
+			rel='apple-touch-startup-image'
+			media=`(device-width: ${v.w}px) and (device-height: ${v.h}px) and (-webkit-device-pixel-ratio: ${v.dpr}) and (orientation: ${v.o})`
+			href=require(`../../public/images/app/app-splash-${v.o === 'portrait' ? `${v.w * v.dpr}x${v.h * v.dpr}` : `${v.h * v.dpr}x${v.w * v.dpr}`}.png`)
+		)
