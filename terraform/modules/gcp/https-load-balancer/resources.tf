@@ -10,7 +10,7 @@ module "lb-http" {
   source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
   version = "6.3.0"
 
-  name                            = "gcp-site-m-xlb-https"
+  name                            = "gcp-site-m-xlb"
   ssl                             = true
   managed_ssl_certificate_domains = ["rahil-p.com", "www.rahil-p.com"]
   use_ssl_certificates            = false
