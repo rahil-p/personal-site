@@ -9,8 +9,7 @@ COPY package.json yarn.lock .yarnrc.yml tsconfig.base.json ./
 COPY .yarn ./.yarn/
 
 # Packages
-COPY dev ./dev/
-COPY packages ./packages/
+#COPY packages ./packages/
 
 # Site
 COPY services/site ./services/site/
