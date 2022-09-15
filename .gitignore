@@ -1,7 +1,6 @@
 # Custom
 build
 package-lock.json
-private
 
 # Redis
 redis.conf

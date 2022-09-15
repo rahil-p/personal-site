@@ -11,8 +11,8 @@
 		"webpack.config.js"
 	],
 	"homepage": "https://rahil-p.com",
-	"repository": "rahil-p/personal-website.git",
-	"bugs": "https://github.com/rahil-p/personal-website/issues",
+	"repository": "rahil-p/personal-site.git",
+	"bugs": "https://github.com/rahil-p/personal-site/issues",
 	"author": {
 		"name": "Rahil Patel",
 		"url": "https://github.com/rahil-p"

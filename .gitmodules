@@ -1,0 +1,3 @@
+[submodule "services/site/src/private"]
+	path = services/site/src/private
+	url = git@github.com:rahil-p/personal-site-private.git

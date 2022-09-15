@@ -6893,9 +6893,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"personal-website@workspace:.":
+"personal-site@workspace:.":
   version: 0.0.0-use.local
-  resolution: "personal-website@workspace:."
+  resolution: "personal-site@workspace:."
   dependencies:
     "@rahil-p/eslint-config-base": ^1.0.2
     "@rahil-p/eslint-config-react": ^1.0.2
