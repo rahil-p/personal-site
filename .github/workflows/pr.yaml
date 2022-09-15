@@ -10,7 +10,150 @@ env:
   NODE_VERSION: '16.13.2'
 
 jobs:
-  init:
+  evaluate-workspaces:
+    name: Evaluate Workspaces
     runs-on: ubuntu-latest
+    outputs:
+      cache: ${{ steps.store-cache.outputs.result }}
+      tests: ${{ steps.store-tests.outputs.result }}
+      workspaces: ${{ steps.store-workspaces.outputs.result }}
     steps:
-      - run: echo init
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
+      - name: Store Cache
+        id: store-cache
+        run: |-
+          result=$(yarn config get cacheFolder);
+          echo "::set-output name=result::${result}";
+          echo "$result";
+      - name: Cache Modules
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.store-cache.outputs.result }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install Modules
+        run: yarn install --immutable
+      - name: Store Last Successful Build
+        id: store-sha
+        run: |-
+          result=$( \
+            gh run list \
+              --json name,status,conclusion,event,headBranch,headSha \
+              --jq '
+                map(
+                  select(
+                    .name == "ci" and
+                    .status == "completed" and
+                    .conclusion == "success" and
+                    .event == "push" and
+                    .headBranch == "main"
+                  )
+                ) | min_by(.createdAt) | .headSha
+              '
+          );
+          echo "::set-output name=result::${result}";
+          echo "$result";
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.event.repository.name }}
+      - name: Store Tests
+        id: store-tests
+        run: |-
+          result=$( \
+            args="--recursive --since=${{ steps.store-sha.outputs.result }}" \
+            yarn run list \
+              | jq -c 'map(select(.location | test("(?<=(packages|services)\/)[^\/]+$")))' \
+          );
+          echo "::set-output name=result::${result}";
+          echo "$result";
+      - name: Store Workspaces
+        id: store-workspaces
+        run: |-
+          result=$( \
+            args="--recursive --since=${{ steps.store-sha.outputs.result }}" \
+            yarn run list \
+              | jq -c \
+          );
+          echo "::set-output name=result::${result}";
+          echo "$result";
+
+  test:
+    name: Test Packages
+    runs-on: ubuntu-latest
+    needs:
+      - evaluate-workspaces
+    if: ${{ needs.evaluate-workspaces.outputs.tests != '[]' && needs.evaluate-workspaces.outputs.tests != '' }}
+    strategy:
+      matrix:
+        workspace: ${{ fromJSON(needs.evaluate-workspaces.outputs.tests) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
+      - name: Cache Modules
+        uses: actions/cache@v3
+        with:
+          path: ${{ needs.evaluate-workspaces.outputs.cache }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install Modules
+        run: yarn install --immutable
+      - name: Run Tests
+        run: yarn workspace ${{ matrix.workspace.name }} run test
+
+  check-versions:
+    name: Check Versions
+    runs-on: ubuntu-latest
+    needs:
+      - evaluate-workspaces
+    if: ${{ needs.evaluate-workspaces.outputs.workspaces != '[]' && needs.evaluate-workspaces.outputs.workspaces != '' }}
+    strategy:
+      matrix:
+        workspace: ${{ fromJSON(needs.evaluate-workspaces.outputs.workspaces) }}
+    steps:
+      - name: Checkout (Base)
+        uses: actions/checkout@v2
+        with:
+          ref: '${{ github.event.pull_request.base.ref }}'
+      - name: Store Package Version (Base)
+        id: store-version-base
+        run: |-
+          result="$( \
+            cat ${{ matrix.workspace.location }}/package.json \
+              | grep version \
+              | head -1 \
+              | awk -F: '{ print $2 }' | sed 's/[\",]//g' \
+              | tr -d '[[:space:]]' \
+          )";
+          echo "::set-output name=result::${result}";
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Store Package Version (Base)
+        id: store-version
+        run: |-
+          result="$( \
+            cat ${{ matrix.workspace.location }}/package.json \
+              | grep version \
+              | head -1 \
+              | awk -F: '{ print $2 }' | sed 's/[\",]//g' \
+              | tr -d '[[:space:]]' \
+          )";
+          echo "::set-output name=result::${result}";
+      - name: Compare Versions
+        run: |-
+          npx --yes semver-compare-cli \
+            ${{ steps.store-version.outputs.result }} gt ${{ steps.store-version-base.outputs.result }};
