@@ -8,6 +8,7 @@ on:
 env:
   NODE_VERSION: '16.13.2'
   SENTRY_ORG: 'rahil-p'
+  GCP_PROJECT_ID: 'rahil-p'
 
 jobs:
   evaluate-workspaces:
@@ -165,7 +166,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: us-docker.pkg.dev/rahil-p/services/${{ steps.store-name.outputs.result }}
+          images: us-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/services/${{ steps.store-name.outputs.result }}
           tags: |
             type=sha
             type=semver,pattern={{version}},value=${{ steps.store-version.outputs.result }}
