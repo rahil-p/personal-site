@@ -2,6 +2,6 @@
 
 ## Services
 
-### [@rahil-p/site](rahil-p/site)
+### [@rahil-p/site](services/site)
 
 [rahil-p.com](https://rahil-p.com)
