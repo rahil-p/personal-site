@@ -1,4 +1,5 @@
 server {
     server_name                         ~^www\.(?<domain>.+)$;
+    listen                              '${SITE_PORT}';
     return                              301 $scheme://$domain$request_uri;
 }
