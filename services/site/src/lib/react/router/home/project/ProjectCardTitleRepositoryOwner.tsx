@@ -18,6 +18,7 @@ export default function ProjectCardTitleRepositoryOwner(props: Props) {
 		<span
 			css={css`
 				display: block;
+				font-size: 0.8em;
 				font-weight: 700;
 				color: ${theme.colors.main.colorSoft};
 			`}
