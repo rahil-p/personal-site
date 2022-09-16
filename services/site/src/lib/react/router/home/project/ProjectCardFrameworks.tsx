@@ -69,6 +69,7 @@ export default function ProjectCardFrameworks(props: Props) {
 					padding: 0;
 					margin: 0;
 					font-family: _dm, monospace;
+					font-size: clamp(0.8rem, 2.325vw, 0.875rem);
 					color: ${theme.colors.greyscale.i6};
 					transition: height var(--ease-time) var(--ease-fn);
 				`,

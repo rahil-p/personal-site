@@ -47,7 +47,7 @@ class AnimationStateController {
 		context.rotate(this.count / 20); // Rotate about origin (orbit)
 		context.translate(r * this.centerOffset[0], r * this.centerOffset[1]); // Move origin to axis
 		context.scale(0.8, 0.8); // Scale to contain entity w/n canvas
-		context.rotate(this.count / 10); // Rotate about axis
+		context.rotate(this.count / 20); // Rotate about axis
 
 		const path = new Path2D();
 
@@ -112,7 +112,7 @@ interface Props {
 }
 
 export default function BlobsCanvasAnimation(props: Props) {
-	const { orbitRadius = 0.0625, cssExtra, canvasProps, containerProps } = props;
+	const { orbitRadius = 0.05, cssExtra, canvasProps, containerProps } = props;
 
 	const theme = useTheme();
 

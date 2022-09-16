@@ -15,7 +15,7 @@ export default function ProjectCardTitleHeading(props: Props) {
 	return (
 		<h3
 			css={css`
-				font-size: 1.4em;
+				font-size: 1em;
 			`}
 		>
 			{anchorProps ? (

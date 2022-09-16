@@ -19,6 +19,12 @@ export default function IntroBanner() {
 				column-gap: clamp(2em, 10vw, 12em);
 				justify-content: space-between;
 				padding: var(--padding-h-main);
+				padding-top: clamp(2.25rem, calc(var(--padding-h-main) * 1.5), 8em);
+
+				@media (max-width: 400px) {
+					flex-direction: column;
+					row-gap: 4em;
+				}
 			`}
 		>
 			<div>
@@ -66,6 +72,10 @@ export default function IntroBanner() {
 
 					@media (max-width: 1000px) {
 						justify-content: flex-start;
+					}
+
+					@media (max-width: 400px) {
+						flex-direction: row;
 					}
 				`}
 				exclude={[Platform.STACK_OVERFLOW]}

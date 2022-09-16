@@ -48,7 +48,7 @@ export default function ProjectsSection(props: Props) {
 					margin-right: var(--padding-h-main);
 					margin-bottom: 0;
 					margin-left: auto;
-					font-size: clamp(1.2rem, 7.5vw, 1.8rem);
+					font-size: clamp(1.5rem, 4vw, 1.8rem);
 					color: ${theme.colors.main.color};
 					text-align: right;
 					cursor: default;

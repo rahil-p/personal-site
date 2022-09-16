@@ -7,7 +7,6 @@ import { CSSTransition } from 'react-transition-group';
 
 import { DarkModeContext, useDarkModeDispatch } from '../../hooks/theme';
 import { useMetaTemplate } from '../../hooks/dom';
-import Footer from './Footer';
 import { fadeTransitionStyle } from '../../../common/styles/transitions';
 
 import type { ReactElement } from 'react';
@@ -67,7 +66,6 @@ function View(props: Props) {
 							`}
 						>
 							{children}
-							<Footer />
 						</div>
 					</CSSTransition>
 				</DarkModeContext.Provider>

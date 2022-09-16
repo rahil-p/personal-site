@@ -40,8 +40,8 @@ export default function ProjectCardNav(props: Props) {
 				flex-direction: row;
 				column-gap: 0.75em;
 				align-items: center;
-				margin-top: 0.5em;
-				font-size: 0.85em;
+				margin-top: 0.8em;
+				font-size: 0.7em;
 			`}
 		>
 			{repositoryAnchorProps ? (

@@ -19,23 +19,23 @@ export default function ProjectsBanner() {
 	return (
 		<div
 			css={css`
-				--padding-top: max(calc(var(--padding-h-main) * 2), 5rem);
+				--margin-top: max(calc(var(--padding-h-main) * 2), 5rem);
 
 				position: relative;
 				display: flex;
-				padding: var(--padding-top) 0 calc(var(--padding-top) * 1.5);
+				margin-top: var(--margin-top);
+				margin-bottom: calc(var(--margin-top) * 1.5);
 			`}
 		>
 			<div
 				css={css`
 					position: absolute;
-					top: var(--padding-top);
 					left: -37.5%;
-					height: calc(100% - var(--padding-top));
+					height: 100%;
 					clip-path: inset(0);
 
 					@media (max-width: 1000px) {
-						left: -25%;
+						left: -30%;
 					}
 				`}
 			>
@@ -132,7 +132,7 @@ export default function ProjectsBanner() {
 											anchorProps: { title: 'Visit Kubernetes on Github' },
 										},
 										name: 'ingress-nginx',
-										description: 'Kubernetes ingress controller implemented with NGINX',
+										description: 'Kubernetes ingress controller implemented with Nginx',
 									}}
 									siteAnchorProps={{
 										href: 'https://kubernetes.github.io/ingress-nginx',

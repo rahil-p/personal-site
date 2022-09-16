@@ -8,7 +8,7 @@ export default function IntroHeading() {
 			css={css`
 				position: relative;
 				margin-bottom: 1.25em;
-				font-size: clamp(1.75rem, 7.5vw, 5.75rem);
+				font-size: clamp(2.25rem, 7.5vw, 5.75rem);
 				line-height: 1;
 			`}
 		>

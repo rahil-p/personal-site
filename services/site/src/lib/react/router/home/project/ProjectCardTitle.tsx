@@ -13,7 +13,7 @@ export default function ProjectCardTitle(props: Props) {
 		<div
 			css={css`
 				margin: 1em 0 0.75em;
-				font-size: clamp(0.9rem, 5vw, 1.15rem);
+				font-size: clamp(1.25rem, 4vw, 1.5rem);
 				line-height: 1.25;
 			`}
 			{...delegatedProps}

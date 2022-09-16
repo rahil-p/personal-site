@@ -5,7 +5,15 @@ import CommentText from '../layout/CommentText';
 import TextAnchor from '../buttons/TextAnchor';
 import { useMetaTemplate } from '../../hooks/dom';
 
-export default function Footer() {
+import type { CSSExtra } from '../../../common/types';
+
+interface Props {
+	cssExtra?: CSSExtra;
+}
+
+export default function Footer(props: Props) {
+	const { cssExtra } = props;
+
 	const theme = useTheme();
 
 	const meta = useMetaTemplate();
@@ -13,23 +21,26 @@ export default function Footer() {
 
 	return (
 		<footer
-			css={css`
-				z-index: 99;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				row-gap: 1em;
-				column-gap: 4em;
-				align-content: center;
-				align-items: center;
-				justify-content: space-between;
-				width: 100%;
-				padding: calc(var(--padding-h-main) / 2) var(--padding-h-main);
-				margin-top: auto;
-				color: ${theme.colors.main.color};
-				background-color: ${theme.colors.main.background};
-				text-rendering: optimizeLegibility;
-			`}
+			css={[
+				css`
+					z-index: 99;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					row-gap: 1em;
+					column-gap: 4em;
+					align-content: center;
+					align-items: center;
+					justify-content: space-between;
+					width: 100%;
+					padding: calc(var(--padding-h-main) / 2) var(--padding-h-main);
+					margin-top: auto;
+					color: ${theme.colors.main.color};
+					background-color: ${theme.colors.main.background};
+					text-rendering: optimizeLegibility;
+				`,
+				cssExtra,
+			]}
 		>
 			<div
 				css={css`

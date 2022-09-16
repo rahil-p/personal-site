@@ -5,7 +5,7 @@ export const fadeTransitionStyle = css`
 
 	&.fade-enter,
 	&.fade-appear {
-		opacity: 0.01;
+		opacity: 0.001;
 	}
 
 	&.fade-enter-active,
