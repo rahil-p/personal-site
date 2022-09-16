@@ -13,6 +13,10 @@
 	@include ease-fn-pair(ease-fn-slide, 0.645, 0.045, 0.355, 1);
 	@include ease-fn-pair(ease-cubic, 0.32, 0, 0.67, 0);
 	@include ease-fn-pair(ease-sine, 0.12, 0, 0.39, 0);
+
+	@media (max-width: 250px) {
+		--padding-h-main: 0.9375rem;
+	}
 }
 
 html,

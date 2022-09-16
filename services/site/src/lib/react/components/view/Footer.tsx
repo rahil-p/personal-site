@@ -27,7 +27,7 @@ export default function Footer(props: Props) {
 					display: flex;
 					flex-direction: row;
 					flex-wrap: wrap;
-					row-gap: 1em;
+					row-gap: 1.75em;
 					column-gap: 4em;
 					align-content: center;
 					align-items: center;
