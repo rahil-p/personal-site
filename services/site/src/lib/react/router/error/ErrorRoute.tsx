@@ -6,6 +6,7 @@ import ErrorView from '../../components/view/ErrorView';
 import SetMeta from '../../components/utils/SetMeta';
 import { socialAnchorStyle } from '../../components/layout/SocialNav';
 import HomeGraphic from '../../../../public/images/ui/home.svg';
+import Footer from '../../components/view/Footer';
 
 interface Props {
 	setMeta?: boolean;
@@ -58,6 +59,7 @@ export default function ErrorRoute(props: Props) {
 					<ErrorView errorMessage={errorMessage} errorStatus={errorStatus} />
 				</div>
 			</Main>
+			<Footer />
 		</>
 	);
 }
