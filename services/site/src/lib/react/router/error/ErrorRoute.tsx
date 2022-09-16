@@ -9,19 +9,18 @@ import HomeGraphic from '../../../../public/images/ui/home.svg';
 import Footer from '../../components/view/Footer';
 
 interface Props {
-	setMeta?: boolean;
 	errorMessage?: string;
 	errorStatus?: string;
 }
 
 export default function ErrorRoute(props: Props) {
-	const { setMeta = true, errorMessage = 'Page Not Found', errorStatus = '404' } = props;
+	const { errorMessage = 'Page Not Found', errorStatus = '404' } = props;
 
 	const theme = useTheme();
 
 	return (
 		<>
-			{setMeta ? <SetMeta nofollow noindex nosnippet title={'Error'} /> : null}
+			<SetMeta nofollow noindex nosnippet title={'Error'} />
 			<Main
 				css={css`
 					display: flex;

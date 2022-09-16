@@ -17,9 +17,7 @@ export default function LazyRoute(props: Props) {
 	const { element, loaderProps } = props;
 
 	return (
-		<Sentry.ErrorBoundary
-			fallback={<ErrorRoute errorMessage={'Something went wrong'} errorStatus={'#$%!'} setMeta={false} />}
-		>
+		<Sentry.ErrorBoundary fallback={<ErrorRoute errorMessage={'Something went wrong'} errorStatus={'Yikes'} />}>
 			<Suspense fallback={<Loader {...loaderProps} />}>{element}</Suspense>
 		</Sentry.ErrorBoundary>
 	);

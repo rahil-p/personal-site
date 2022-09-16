@@ -32,14 +32,18 @@ export default function ErrorView(props: Props) {
 						line-height: 1;
 						color: ${theme.colors.accent.main0};
 						letter-spacing: 0.08em;
+
+						@media (max-width: 250px) {
+							font-size: 3.125rem;
+						}
 					`}
 				>
-					{meta.current['rp:template:error:status'] ?? errorStatus ?? 'Oof'}
+					{meta.current['rp:template:error:status'] ?? errorStatus ?? 'Yikes'}
 				</span>
 				<span
 					css={css`
 						margin-top: 1.25em;
-						font-size: clamp(10px, 1.8vw, 1.8vh);
+						font-size: clamp(0.625rem, 1.8vw, 1.8vh);
 						letter-spacing: 0.25em;
 					`}
 				>
