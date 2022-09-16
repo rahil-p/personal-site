@@ -22,7 +22,8 @@
 	"scripts": {
 		"analyze": "webpack-bundle-analyzer dist/rahil-p.com/bundle.stats.json",
 		"build": "exit 0",
-		"bundle": "webpack",
+		"bundle": "yarn run bundle:types && webpack",
+		"bundle:types": "yarn exec tsc --project tsconfig.json --emitDeclarationOnly --skipDefaultLibCheck",
 		"lint": "yarn run lint:style && yarn run lint:code",
 		"lint:code": "yarn exec eslint --fix --ignore-pattern '/dist/' .",
 		"lint:style": "yarn run lint:style-scss && yarn run lint:style-tsx",

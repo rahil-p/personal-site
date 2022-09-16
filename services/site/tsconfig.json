@@ -14,7 +14,8 @@
 		"inlineSources": true,
 		"removeComments": true,
 		"sourceRoot": "/",
-		"types": ["node"]
+		"types": ["node"],
+		"lib": ["dom", "dom.iterable", "webworker"]
 	},
 	"references": []
 }

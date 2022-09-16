@@ -54,6 +54,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.tsx?$/,
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: require.resolve('babel-loader'),
