@@ -13,7 +13,7 @@ export default function ProjectCardDescription(props: Props) {
 		<p
 			css={css`
 				font-size: clamp(0.8rem, 2.325vw, 0.875rem);
-				color: ${theme.colors.greyscale.i6};
+				color: ${theme.colors.main.colorSoft};
 			`}
 		>
 			{description}

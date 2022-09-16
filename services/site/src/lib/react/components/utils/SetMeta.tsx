@@ -25,7 +25,7 @@ export default function SetMeta(props: Props) {
 	return (
 		<>
 			<Helmet>
-				{...[
+				{[
 					...(title ? [<title key={'title'}>{title}</title>] : []),
 					...(description ? [<meta key={'description'} content={description} name={'description'} />] : []),
 					...(robots ? [<meta key={'robots'} content={robots} name={'robots'} />] : []),

@@ -32,7 +32,7 @@ export default function IntroBanner() {
 				<div
 					css={css`
 						font-size: 1em;
-						color: ${theme.colors.greyscale.i6};
+						color: ${theme.colors.main.colorSoft};
 					`}
 				>
 					<div

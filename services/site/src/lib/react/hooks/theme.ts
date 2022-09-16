@@ -19,6 +19,8 @@ export const darkTheme = {
 			backgroundAlt: '#27272c',
 			color: '#ffffff',
 			colorDim: '#b9b6b6',
+			colorSoft: '#bbbbbb',
+			colorSofter: '#999999',
 		},
 		accent: {
 			main0: '#33cc99',
@@ -26,17 +28,6 @@ export const darkTheme = {
 			blobR: '#ff0000',
 			blobG: '#00ff00',
 			blobB: '#0000ff',
-		},
-		greyscale: {
-			i0: '#000000',
-			i1: '#111111',
-			i2: '#333333',
-			i3: '#555555',
-			i4: '#777777',
-			i5: '#999999',
-			i6: '#bbbbbb',
-			i7: '#dddddd',
-			i8: '#ffffff',
 		},
 	},
 };

@@ -17,7 +17,7 @@ const anchorStyle = (theme: Theme) => css`
 	${socialAnchorStyle(theme)};
 
 	&:is(:link, :visited, :active):not(:hover) {
-		color: ${theme.colors.greyscale.i6};
+		color: ${theme.colors.main.colorSoft};
 	}
 `;
 
@@ -69,7 +69,7 @@ export default function ProjectCardNav(props: Props) {
 					css={css`
 						font-size: 0.9em;
 						font-style: italic;
-						color: ${theme.colors.greyscale.i5};
+						color: ${theme.colors.main.colorSofter};
 					`}
 				>
 					Coming soon

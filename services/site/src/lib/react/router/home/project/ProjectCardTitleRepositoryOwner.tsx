@@ -19,7 +19,7 @@ export default function ProjectCardTitleRepositoryOwner(props: Props) {
 			css={css`
 				display: block;
 				font-weight: 700;
-				color: ${theme.colors.greyscale.i6};
+				color: ${theme.colors.main.colorSoft};
 			`}
 		>
 			<TextAnchor

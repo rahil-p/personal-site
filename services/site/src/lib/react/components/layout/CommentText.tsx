@@ -19,7 +19,7 @@ export default function CommentText(props: Props) {
 				css`
 					& > span:first-of-type {
 						font-weight: 400;
-						color: ${theme.colors.greyscale.i8};
+						color: ${theme.colors.main.color};
 						user-select: none;
 
 						&::after {
@@ -30,7 +30,7 @@ export default function CommentText(props: Props) {
 					& > span:last-of-type {
 						font-family: _dm, monospace;
 						font-weight: 300;
-						color: ${theme.colors.greyscale.i6};
+						color: ${theme.colors.main.colorSoft};
 					}
 				`,
 				cssExtra,

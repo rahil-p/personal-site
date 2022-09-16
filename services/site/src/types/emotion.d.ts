@@ -8,6 +8,8 @@ declare module '@emotion/react' {
 				backgroundAlt: string;
 				color: string;
 				colorDim: string;
+				colorSoft: string;
+				colorSofter: string;
 			};
 			accent: {
 				main0: string;
@@ -15,17 +17,6 @@ declare module '@emotion/react' {
 				blobR: string;
 				blobG: string;
 				blobB: string;
-			};
-			greyscale: {
-				i0: string;
-				i1: string;
-				i2: string;
-				i3: string;
-				i4: string;
-				i5: string;
-				i6: string;
-				i7: string;
-				i8: string;
 			};
 		};
 	}
