@@ -1,9 +1,10 @@
 import { css, useTheme } from '@emotion/react';
 
-import CommentText from '../../components/layout/CommentText';
-import SocialNav, { Platform, socialAnchorStyle } from '../../components/layout/SocialNav';
-import { useMetaTemplate } from '../../hooks/dom';
-import EmailGraphic from '../../../../public/images/ui/email.svg';
+import CommentText from '../../../components/layout/CommentText';
+import SocialNav, { Platform, socialAnchorStyle } from '../../../components/layout/SocialNav';
+import { useMetaTemplate } from '../../../hooks/dom';
+import EmailGraphic from '../../../../../public/images/ui/email.svg';
+import IntroHeading from './IntroHeading';
 
 export default function IntroBanner() {
 	const theme = useTheme();
@@ -21,33 +22,7 @@ export default function IntroBanner() {
 			`}
 		>
 			<div>
-				<hgroup
-					css={css`
-						margin-bottom: 1.25em;
-						font-size: clamp(1.75rem, 7.5vw, 5.75rem);
-						font-weight: 700;
-						line-height: 1;
-					`}
-				>
-					<span
-						css={css`
-							display: block;
-							margin-bottom: 0.3em;
-							font-size: 0.65em;
-						`}
-					>
-						Hello. I&apos;m
-					</span>
-					<h1
-						css={css`
-							position: relative;
-							left: -0.05em;
-							font-size: 1em;
-						`}
-					>
-						Rahil Patel
-					</h1>
-				</hgroup>
+				<IntroHeading />
 				<div
 					css={css`
 						font-size: 1em;

@@ -1,6 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 
-import { socialAnchorStyle } from '../SocialNav';
+import { socialAnchorStyle } from '../../../components/layout/SocialNav';
 import SocialGithubGraphic from '../../../../../public/images/ui/social/github.svg';
 import LinkGraphic from '../../../../../public/images/ui/link.svg';
 

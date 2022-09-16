@@ -1,7 +1,7 @@
 import SetMeta from '../../components/utils/SetMeta';
 import Main from '../../components/view/Main';
-import IntroBanner from './IntroBanner';
-import ProjectsBanner from './ProjectsBanner';
+import IntroBanner from './intro/IntroBanner';
+import ProjectsBanner from './project/ProjectsBanner';
 
 export default function HomeRoute() {
 	return (

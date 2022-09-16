@@ -1,6 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 
-import TextAnchor from '../../buttons/TextAnchor';
+import TextAnchor from '../../../components/buttons/TextAnchor';
 
 import type { ComponentPropsWithoutRef } from 'react';
 

@@ -25,6 +25,7 @@ export default function Footer() {
 				justify-content: space-between;
 				width: 100%;
 				padding: calc(var(--padding-h-main) / 2) var(--padding-h-main);
+				margin-top: auto;
 				color: ${theme.colors.main.color};
 				background-color: ${theme.colors.main.background};
 				text-rendering: optimizeLegibility;
@@ -42,7 +43,13 @@ export default function Footer() {
 			>
 				<CommentText>built by Rahil Patel</CommentText>
 				<CommentText>
-					<TextAnchor href={`mailto:${emailAddress}`} title={'Email me'}>
+					<TextAnchor
+						cssExtra={css`
+							text-underline-offset: 0.25em;
+						`}
+						href={`mailto:${emailAddress}`}
+						title={'Email me'}
+					>
 						{emailAddress}
 					</TextAnchor>
 				</CommentText>

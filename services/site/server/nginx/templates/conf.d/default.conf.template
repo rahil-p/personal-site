@@ -7,6 +7,14 @@ server {
     # Brotli
     brotli                              on;
     brotli_static                       on;
+    brotli_min_length                   120;
+    brotli_comp_level                   4;
+    brotli_types                        text/plain
+                                        text/css
+                                        application/javascript
+                                        application/json
+                                        image/svg+xml
+                                        application/xml+rss;
     # Sub
     sub_filter_once                     off;
     sub_filter_last_modified            off;

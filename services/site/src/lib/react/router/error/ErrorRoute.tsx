@@ -7,12 +7,20 @@ import SetMeta from '../../components/utils/SetMeta';
 import { socialAnchorStyle } from '../../components/layout/SocialNav';
 import HomeGraphic from '../../../../public/images/ui/home.svg';
 
-export default function ErrorRoute() {
+interface Props {
+	setMeta?: boolean;
+	errorMessage?: string;
+	errorStatus?: string;
+}
+
+export default function ErrorRoute(props: Props) {
+	const { setMeta = true, errorMessage = 'Page Not Found', errorStatus = '404' } = props;
+
 	const theme = useTheme();
 
 	return (
 		<>
-			<SetMeta nofollow noindex nosnippet title={'Error'} />
+			{setMeta ? <SetMeta nofollow noindex nosnippet title={'Error'} /> : null}
 			<Main
 				css={css`
 					display: flex;
@@ -47,7 +55,7 @@ export default function ErrorRoute() {
 						justify-content: center;
 					`}
 				>
-					<ErrorView errorMessage={'Page Not Found'} errorStatus={'400'} />
+					<ErrorView errorMessage={errorMessage} errorStatus={errorStatus} />
 				</div>
 			</Main>
 		</>

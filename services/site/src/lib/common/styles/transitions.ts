@@ -5,7 +5,7 @@ export const fadeTransitionStyle = css`
 
 	&.fade-enter,
 	&.fade-appear {
-		opacity: 0;
+		opacity: 0.01;
 	}
 
 	&.fade-enter-active,
@@ -19,7 +19,7 @@ export const fadeTransitionStyle = css`
 	}
 
 	&.fade-exit-active {
-		opacity: 0;
+		opacity: 0.01;
 		transition: opacity calc(var(--ease-time) * var(--transition-speed-multiplier)) var(--ease-fn-inverse);
 	}
 `;

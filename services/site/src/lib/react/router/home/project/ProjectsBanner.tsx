@@ -1,17 +1,17 @@
 import { css } from '@emotion/react';
 
-import ProjectCardForProduct from '../../components/layout/project/ProjectCardForProduct';
-import ProjectCardForRepository from '../../components/layout/project/ProjectCardForRepository';
-import ProjectsSection from '../../components/layout/project/ProjectsSection';
+import ProjectCardForProduct from './ProjectCardForProduct';
+import ProjectCardForRepository from './ProjectCardForRepository';
+import ProjectsSection from './ProjectsSection';
 import {
 	FrameworkAPIs,
 	FrameworkCloudPlatforms,
 	FrameworkDatabases,
 	FrameworkLanguages,
 	FrameworkTechnologies,
-} from '../../components/layout/project/ProjectCardFrameworks';
-import { ProjectsContext, ProjectsGroup, useProjectsDispatch } from '../../hooks/projects';
-import BlobsCanvasAnimation from '../../components/graphics/BlobsCanvasAnimation';
+} from './ProjectCardFrameworks';
+import { ProjectsContext, ProjectsGroup, useProjectsDispatch } from '../../../hooks/projects';
+import BlobsCanvasAnimation from '../../../components/graphics/BlobsCanvasAnimation';
 
 export default function ProjectsBanner() {
 	const projectsDispatch = useProjectsDispatch();
