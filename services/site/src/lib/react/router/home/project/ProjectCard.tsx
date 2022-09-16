@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react';
 
 import { useProjects } from '../../../hooks/projects';
+import { boxShadow } from '../../../../common/styles/shadow';
 
 import type { ProjectsGroup } from '../../../hooks/projects';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
@@ -45,53 +46,68 @@ export default function ProjectCard(props: Props) {
 					}
 					return classes.join(' ');
 				})()}
-				css={css`
-					position: relative;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					min-width: 40vw;
-					overflow: hidden;
-					backdrop-filter: blur(4px);
-					background-color: ${theme.colors.main.backgroundAlt}dd;
-					border-radius: var(--border-radius-0) 0 0 var(--border-radius-0);
-					transition: transform var(--projects-section-ease-time) var(--projects-section-ease-fn),
-						backdrop-filter var(--projects-section-ease-time) var(--projects-section-ease-fn);
-					transform-origin: 100% 50%;
+				css={[
+					css`
+						position: relative;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						min-width: 40vw;
+						overflow: hidden;
+						backdrop-filter: blur(4px);
+						background-color: ${theme.colors.main.backgroundAlt}dd;
+						border-radius: var(--border-radius-0) 0 0 var(--border-radius-0);
+						transition: transform var(--projects-section-ease-time) var(--projects-section-ease-fn),
+							backdrop-filter var(--projects-section-ease-time) var(--projects-section-ease-fn),
+							box-shadow var(--projects-section-ease-time) var(--projects-section-ease-fn);
+						transform-origin: 100% 50%;
 
-					&::after {
-						content: '';
-						opacity: 0;
-						transition: opacity var(--projects-section-ease-time) var(--projects-section-ease-fn);
-					}
-
-					&.project-card__container--dim {
 						&::after {
-							position: absolute;
-							z-index: 1;
-							width: 100%;
-							height: 100%;
 							content: '';
-							background-color: ${theme.colors.main.backgroundAlt}33;
-							opacity: 1;
+							opacity: 0;
+							transition: opacity var(--projects-section-ease-time) var(--projects-section-ease-fn);
 						}
-						transform: scale(calc(2 - var(--project-card-focus-scale)));
-						backdrop-filter: blur(2px);
-					}
 
-					&.project-card__container--focus {
-						transform: scale(var(--project-card-focus-scale));
-						backdrop-filter: blur(6px);
-					}
+						&.project-card__container--dim {
+							&::after {
+								position: absolute;
+								z-index: 1;
+								width: 100%;
+								height: 100%;
+								content: '';
+								background-color: ${theme.colors.main.backgroundAlt}33;
+								opacity: 1;
+							}
+							transform: scale(calc(2 - var(--project-card-focus-scale)));
+							backdrop-filter: blur(2px);
+						}
 
-					@media (prefers-reduced-motion: reduce) {
-						--project-card-focus-scale: 1.006125;
-					}
+						&.project-card__container--focus {
+							transform: scale(var(--project-card-focus-scale));
+							backdrop-filter: blur(6px);
+						}
 
-					@media (prefers-reduced-transparency: reduce) {
-						background-color: ${theme.colors.main.backgroundAlt}f2;
-					}
-				`}
+						@media (prefers-reduced-motion: reduce) {
+							--project-card-focus-scale: 1.006125;
+						}
+
+						@media (prefers-reduced-transparency: reduce) {
+							background-color: ${theme.colors.main.backgroundAlt}f2;
+						}
+					`,
+
+					css`
+						${boxShadow(2)};
+
+						&.project-card__container--dim {
+							${boxShadow(1)};
+						}
+
+						&.project-card__container--focus {
+							${boxShadow(3)};
+						}
+					`,
+				]}
 			>
 				<div
 					className={(() => {

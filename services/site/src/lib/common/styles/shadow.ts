@@ -6,7 +6,7 @@ const getShadowLayers = (layers: LayerCount) => {
 	const boxShadows = [];
 	for (let i = 0; i < layers; i += 1) {
 		const x = 0.75 * 2 ** i;
-		boxShadows.push(`${x}px ${2 * x}px ${2 * x}px hsl(0deg 0% 0% / 50%)`);
+		boxShadows.push(`${x}px ${2 * x}px ${2 * x}px hsl(0deg 0% 0% / 20%)`);
 	}
 
 	return boxShadows;
