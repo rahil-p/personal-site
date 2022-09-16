@@ -12,6 +12,7 @@
 		"jsxImportSource": "@emotion/react",
 		"composite": true,
 		"inlineSources": true,
+		"removeComments": true,
 		"sourceRoot": "/",
 		"types": ["node"]
 	},

@@ -56,14 +56,25 @@ module.exports = {
 				test: /\.tsx?$/,
 				use: [
 					{
-						loader: require.resolve('ts-loader'),
+						loader: require.resolve('babel-loader'),
 						options: {
-							configFile: 'tsconfig.json',
-							compilerOptions: {
-								removeComments: !devMode,
-								noEmitOnError: true,
-							},
-							projectReferences: true,
+							presets: [
+								[require.resolve('@babel/preset-env')],
+								[
+									require.resolve('@babel/preset-react'),
+									{
+										development: devMode,
+										useSpread: true,
+										runtime: 'automatic',
+										importSource: '@emotion/react',
+									},
+								],
+								[require.resolve('@babel/preset-typescript')],
+							],
+							plugins: [
+								[require.resolve('@babel/plugin-transform-runtime')],
+								[require.resolve('@emotion/babel-plugin')],
+							],
 						},
 					},
 				],
