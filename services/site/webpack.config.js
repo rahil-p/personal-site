@@ -262,7 +262,7 @@ module.exports = {
 				type: 'initial',
 				chunks: ['style', 'core', 'router'],
 			},
-			fileBlacklist: [/^robots\.txt$/, /^.*\.map$/],
+			fileBlacklist: [/^robots\.txt$/, /^.*\.map$/, /^.*\.png$/],
 			as(entry) {
 				return getType(entry);
 			},
