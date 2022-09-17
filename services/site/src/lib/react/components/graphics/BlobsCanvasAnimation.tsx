@@ -142,9 +142,19 @@ export default function BlobsCanvasAnimation(props: Props) {
 		const context = canvas?.getContext('2d');
 		if (!context) return;
 
-		const dpr = entry.devicePixelContentBoxSize[0];
+		const size = (() => {
+			if (entry.devicePixelContentBoxSize as ResizeObserverSize[] | undefined) {
+				const dpSize = entry.devicePixelContentBoxSize[0];
+				return Math.min(dpSize.blockSize, dpSize.inlineSize);
+			}
 
-		const size = Math.min(dpr.blockSize, dpr.inlineSize);
+			return Math.round(
+				Math.min(
+					entry.contentRect.height * window.devicePixelRatio,
+					entry.contentRect.width * window.devicePixelRatio,
+				),
+			);
+		})();
 
 		setCanvasSize(size);
 	}, []);
