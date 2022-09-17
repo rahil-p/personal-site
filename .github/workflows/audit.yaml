@@ -6,13 +6,19 @@ on:
 jobs:
   audit-lighthouse:
     runs-on: ubuntu-latest
-    container:
-      image: emazzotta/lighthouse-badges:6014050
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Run Lighthouse Audit
-        run: lighthouse-badges --urls https://rahil-p.com
+        run: |-
+          docker run --rm \
+            --user root \
+            --env LIGHTHOUSE_BADGES_PARAMS="--preset=desktop" \
+            --volume ${{ github.workspace }}/test_results:/home/chrome/reports:rw \
+            emazzotta/lighthouse-badges:6014050 \
+            /bin/sh -c "lighthouse-badges --save-report --urls https://rahil-p.com --badge-style flat"
       - name: Upload Badges
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-badges
-          path: /home/chrome/reports
+          path: ${{ github.workspace }}/test_results
