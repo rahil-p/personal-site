@@ -41,6 +41,11 @@ export default function Footer(props: Props) {
 					color: ${theme.colors.main.color};
 					background-color: ${theme.colors.main.background};
 					text-rendering: optimizeLegibility;
+
+					@media (max-width: 375px) {
+						flex-direction: column;
+						justify-content: center;
+					}
 				`,
 				cssExtra,
 			]}
