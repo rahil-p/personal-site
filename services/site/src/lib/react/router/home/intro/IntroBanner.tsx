@@ -60,7 +60,13 @@ export default function IntroBanner() {
 							<CommentText>Cloud</CommentText>
 						</aside>
 					</div>
-					<p>I enjoy designing solutions and making them happen with code.</p>
+					<p
+						css={css`
+							font-size: 1.025em;
+						`}
+					>
+						I enjoy designing solutions and making them happen with code.
+					</p>
 				</div>
 			</div>
 			<SocialNav
