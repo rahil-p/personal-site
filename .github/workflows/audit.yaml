@@ -18,7 +18,7 @@ jobs:
             --env LIGHTHOUSE_BADGES_PARAMS="--preset=desktop" \
             --volume ${{ github.workspace }}/audits/lighthouse:/home/chrome/reports:rw \
             emazzotta/lighthouse-badges:6014050 \
-            /bin/sh -c "lighthouse-badges --save-report --urls https://rahil-p.com --badge-style flat"
+            /bin/sh -c "lighthouse-badges --save-report --single-badge --badge-style flat --urls https://rahil-p.com"
       - name: Upload Badges
         uses: actions/upload-artifact@v3
         with:
