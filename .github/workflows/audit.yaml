@@ -9,16 +9,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: badges
       - name: Run Lighthouse Audit
         run: |-
           docker run --rm \
             --user root \
             --env LIGHTHOUSE_BADGES_PARAMS="--preset=desktop" \
-            --volume ${{ github.workspace }}/test_results:/home/chrome/reports:rw \
+            --volume ${{ github.workspace }}/audits/lighthouse:/home/chrome/reports:rw \
             emazzotta/lighthouse-badges:6014050 \
             /bin/sh -c "lighthouse-badges --save-report --urls https://rahil-p.com --badge-style flat"
       - name: Upload Badges
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-badges
-          path: ${{ github.workspace }}/test_results
+          path: ${{ github.workspace }}/audits/lighthouse
+      - name: Commit report
+        run: |-
+          git config --global user.name 'Rahil Patel'
+          git config --global user.email '37254995+rahil-p@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add .
+          git commit -am "Automated Lighthouse audit report"
+          git push origin badges
