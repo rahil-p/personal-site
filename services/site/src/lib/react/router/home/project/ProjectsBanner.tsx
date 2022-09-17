@@ -112,6 +112,22 @@ export default function ProjectsBanner() {
 										description: 'Redis session storage for Node.js and Express.js',
 									}}
 								/>
+								<ProjectCardForRepository
+									frameworks={[
+										FrameworkLanguages.TYPESCRIPT,
+										FrameworkAPIs.REACT,
+										FrameworkAPIs.WEBPACK,
+										FrameworkTechnologies.NGINX,
+										FrameworkTechnologies.DOCKER,
+										FrameworkTechnologies.TERRAFORM,
+									]}
+									group={group}
+									repository={{
+										owner: { name: 'rahil-p', anchorProps: { title: 'Visit me on GitHub' } },
+										name: 'personal-site',
+										description: 'Code used to build and maintain this website',
+									}}
+								/>
 							</ProjectsSection>
 						);
 					})()}
