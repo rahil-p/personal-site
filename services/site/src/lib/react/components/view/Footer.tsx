@@ -36,7 +36,7 @@ export default function Footer(props: Props) {
 					align-items: center;
 					justify-content: space-between;
 					width: 100%;
-					padding: calc(var(--padding-h-main) / 2) var(--padding-h-main);
+					padding: max(calc(var(--padding-h-main) / 2), 1.5em) var(--padding-h-main);
 					margin-top: auto;
 					color: ${theme.colors.main.color};
 					background-color: ${theme.colors.main.background};

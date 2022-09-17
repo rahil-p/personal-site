@@ -32,7 +32,7 @@ export default function ErrorRoute(props: Props) {
 						socialAnchorStyle(theme),
 						css`
 							display: block;
-							margin: calc(var(--padding-h-main) / 2) var(--padding-h-main);
+							margin: max(calc(var(--padding-h-main) / 2), 1.25em) var(--padding-h-main);
 							font-size: 1.25em;
 						`,
 					]}

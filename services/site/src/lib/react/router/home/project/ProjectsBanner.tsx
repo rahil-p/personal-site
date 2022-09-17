@@ -24,7 +24,7 @@ export default function ProjectsBanner() {
 				position: relative;
 				display: flex;
 				margin-top: var(--margin-top);
-				margin-bottom: calc(var(--margin-top) * 1.5);
+				margin-bottom: calc(var(--margin-top) * 1.25);
 			`}
 		>
 			<div
