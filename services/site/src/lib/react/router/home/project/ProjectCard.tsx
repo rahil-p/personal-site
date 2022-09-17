@@ -56,6 +56,8 @@ export default function ProjectCard(props: Props) {
 						overflow: hidden;
 						backdrop-filter: blur(4px);
 						background-color: ${theme.colors.main.backgroundAlt}dd;
+						border: 1px solid ${theme.colors.main.backgroundAltSoft};
+						border-right: none;
 						border-radius: var(--border-radius-0) 0 0 var(--border-radius-0);
 						transition: transform var(--projects-section-ease-time) var(--projects-section-ease-fn),
 							backdrop-filter var(--projects-section-ease-time) var(--projects-section-ease-fn),

@@ -17,6 +17,7 @@ export const darkTheme = {
 		main: {
 			background: '#131517',
 			backgroundAlt: '#27272c',
+			backgroundAltSoft: '#2e2e33',
 			color: '#ffffff',
 			colorDim: '#b9b6b6',
 			colorSoft: '#bbbbbb',
