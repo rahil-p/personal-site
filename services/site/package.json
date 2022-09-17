@@ -1,6 +1,6 @@
 {
 	"name": "@rahil-p/site",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Personal website at rahil-p.com",
 	"main": "index.js",
 	"files": [
