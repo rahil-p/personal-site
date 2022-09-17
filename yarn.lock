@@ -2119,6 +2119,7 @@ __metadata:
     "@types/react": ^18.0.18
     "@types/react-dom": ^18.0.6
     "@types/react-helmet": ^6.1.5
+    "@types/react-lazy-load-image-component": ^1.5.2
     "@types/react-transition-group": ^4.4.5
     "@types/stylis": ^4.0.2
     "@vue/preload-webpack-plugin": ^2.0.0
@@ -2139,6 +2140,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-helmet: ^6.1.0
+    react-lazy-load-image-component: ^1.5.5
     react-router-dom: ^6.3.0
     react-transition-group: ^4.4.5
     sass: ^1.54.9
@@ -2687,6 +2689,16 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: d059cc084d3b3071cce3421bb1170dd42819cf39b81afe60d4fbd66c5ef9ffeaadf1802df80efd9553258f621678f69ceb5a21d73df0d8539d40ae9a0f995485
+  languageName: node
+  linkType: hard
+
+"@types/react-lazy-load-image-component@npm:^1.5.2":
+  version: 1.5.2
+  resolution: "@types/react-lazy-load-image-component@npm:1.5.2"
+  dependencies:
+    "@types/react": "*"
+    csstype: ^3.0.2
+  checksum: f52dfd2eb58d14c3cb7ba4ca5938a10d4925bee7fa8d654f13c8af36e81d9fce3ebce7d51c29f1f78e09134244e0b91607a4b8051a6eb33d63c4355685442d08
   languageName: node
   linkType: hard
 
@@ -6462,6 +6474,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
+  languageName: node
+  linkType: hard
+
 "lodash.truncate@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.truncate@npm:4.4.2"
@@ -8100,6 +8119,19 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-lazy-load-image-component@npm:^1.5.5":
+  version: 1.5.5
+  resolution: "react-lazy-load-image-component@npm:1.5.5"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    lodash.throttle: ^4.1.1
+  peerDependencies:
+    react: ^15.x.x || ^16.x.x || ^17.x.x || ^18.x.x
+    react-dom: ^15.x.x || ^16.x.x || ^17.x.x || ^18.x.x
+  checksum: 596d36aae6c7d2664eac90cc4f2b57d37511fb2408f293a97ed32e8fbe9351daee8a59435d1f96ac30cb3cad921f3f4d504cdb4e213200b3c6822471b47dd8bf
   languageName: node
   linkType: hard
 

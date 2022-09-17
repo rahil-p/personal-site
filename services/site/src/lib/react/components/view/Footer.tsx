@@ -1,9 +1,12 @@
 import { css, useTheme } from '@emotion/react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import SocialNav from '../layout/SocialNav';
 import CommentText from '../layout/CommentText';
 import TextAnchor from '../buttons/TextAnchor';
 import { useMetaTemplate } from '../../hooks/dom';
+import ImageLoader from '../layout/ImageLoader';
+import headshotImage from '../../../../public/images/assets/headshot-square-medium-bw-128.png';
 
 import type { CSSExtra } from '../../../common/types';
 
@@ -44,26 +47,50 @@ export default function Footer(props: Props) {
 		>
 			<div
 				css={css`
-					font-size: 0.85em;
-					white-space: nowrap;
-
-					& > span {
-						display: block;
-					}
+					display: flex;
+					gap: 1em;
+					align-items: center;
 				`}
 			>
-				<CommentText>built by Rahil Patel</CommentText>
-				<CommentText>
-					<TextAnchor
-						cssExtra={css`
-							text-underline-offset: 0.25em;
-						`}
-						href={`mailto:${emailAddress}`}
-						title={'Email me'}
-					>
-						{emailAddress}
-					</TextAnchor>
-				</CommentText>
+				<ImageLoader
+					render={setImageLoaded => (
+						<LazyLoadImage
+							afterLoad={() => {
+								setImageLoaded(true);
+							}}
+							alt={'Rahil Patel'}
+							css={css`
+								width: 100%;
+								height: 100%;
+							`}
+							src={headshotImage}
+							threshold={400}
+						/>
+					)}
+				/>
+				<div
+					css={css`
+						font-size: 0.85em;
+						white-space: nowrap;
+
+						& > span {
+							display: block;
+						}
+					`}
+				>
+					<CommentText>built by Rahil Patel</CommentText>
+					<CommentText>
+						<TextAnchor
+							cssExtra={css`
+								text-underline-offset: 0.25em;
+							`}
+							href={`mailto:${emailAddress}`}
+							title={'Email me'}
+						>
+							{emailAddress}
+						</TextAnchor>
+					</CommentText>
+				</div>
 			</div>
 			<SocialNav
 				css={css`
