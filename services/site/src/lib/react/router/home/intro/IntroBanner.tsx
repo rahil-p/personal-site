@@ -62,7 +62,7 @@ export default function IntroBanner() {
 					</div>
 					<p
 						css={css`
-							font-size: 1.025em;
+							font-size: clamp(0.925em, 1.325vw, 1em);
 						`}
 					>
 						I enjoy designing solutions and making them happen with code.
