@@ -18,9 +18,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - name: Install
+        run: |-
+          npm i -g lighthouse-badges
       - name: Run Lighthouse Audit
         run: |-
-          npx --yes lighthouse-badges \
+          lighthouse-badges \
             --save-report \
             --single-badge \
             --badge-style flat \
