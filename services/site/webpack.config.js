@@ -79,7 +79,6 @@ module.exports = {
 						},
 					},
 				],
-				exclude: /node_modules/,
 			},
 			{
 				test: /\.pug$/,
@@ -288,11 +287,10 @@ module.exports = {
 			],
 		}),
 		/* Plugins for compiling service worker files with configured precache URLs */
-		// via `src/app.js`
 		new WorkboxPlugin.InjectManifest({
 			swSrc: './src/lib/core/service-worker.ts',
 			swDest: 'scripts/service-worker.js',
-			chunks: ['style', 'core'],
+			chunks: ['style', 'core', 'router'],
 			exclude: [/\.map$/, /^manifest.*\.js$/, /images\//],
 			dontCacheBustURLsMatching: /\.[0-z]{6}\.(js|css)/,
 		}),
