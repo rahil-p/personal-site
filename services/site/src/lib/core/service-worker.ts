@@ -1,7 +1,8 @@
+import * as navigationPreload from 'workbox-navigation-preload';
 import { setCacheNameDetails } from 'workbox-core';
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { NavigationRoute, registerRoute } from 'workbox-routing';
+import { CacheFirst, NetworkFirst } from 'workbox-strategies';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { BackgroundSyncPlugin } from 'workbox-background-sync';
 import { initialize as initializeGoogleAnalytics } from 'workbox-google-analytics';
@@ -22,23 +23,22 @@ setCacheNameDetails({
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 precacheAndRoute(self.__WB_MANIFEST); // eslint-disable-line no-restricted-globals,@typescript-eslint/no-unsafe-argument
+navigationPreload.enable();
 cleanupOutdatedCaches();
 
+// Register the navigation route
 registerRoute(
-	({ request }) => request.destination === 'image',
-	new StaleWhileRevalidate({
-		plugins: [
-			new CacheableResponsePlugin({
-				statuses: [0, 200],
-			}),
-			bgSyncPlugin,
-		],
-	}),
+	new NavigationRoute(
+		new NetworkFirst({
+			cacheName: 'navigations',
+		}),
+	),
 );
 
+// Register the image route
 registerRoute(
-	/manifest\.webmanifest/,
-	new StaleWhileRevalidate({
+	({ request }) => request.destination === 'image',
+	new CacheFirst({
 		plugins: [
 			new CacheableResponsePlugin({
 				statuses: [0, 200],
