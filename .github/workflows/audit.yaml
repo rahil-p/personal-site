@@ -22,6 +22,8 @@ jobs:
         run: |-
           npm i -g lighthouse-badges
       - name: Run Lighthouse Audit
+        env:
+          LIGHTHOUSE_BADGES_PARAMS: "--preset=desktop"
         run: |-
           lighthouse-badges \
             --save-report \
