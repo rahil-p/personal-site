@@ -89,7 +89,6 @@ resource "google_compute_backend_service" "default" {
   enable_cdn                      = true
   custom_request_headers          = []
   custom_response_headers         = []
-  health_checks                   = []
   session_affinity                = "NONE"
   affinity_cookie_ttl_sec         = 0
   security_policy                 = null
@@ -105,9 +104,6 @@ resource "google_compute_backend_service" "default" {
   cdn_policy {
     cache_mode                   = "USE_ORIGIN_HEADERS"
     negative_caching             = true
-    client_ttl                   = 3600    # 1 hour
-    default_ttl                  = 3600    # 1 hour
-    max_ttl                      = 7776000 # 90 days
     serve_while_stale            = 86400   # 1 day
     signed_url_cache_max_age_sec = 0
   }
