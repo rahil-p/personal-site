@@ -3,6 +3,9 @@ name: audit
 on:
   workflow_dispatch
 
+env:
+  NODE_VERSION: '16.13.2'
+
 jobs:
   audit-lighthouse:
     runs-on: ubuntu-latest
@@ -11,14 +14,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: badges
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - name: Run Lighthouse Audit
         run: |-
-          docker run --rm \
-            --user root \
-            --env LIGHTHOUSE_BADGES_PARAMS="--preset=desktop" \
-            --volume ${{ github.workspace }}/audits/lighthouse:/home/chrome/reports:rw \
-            emazzotta/lighthouse-badges:6014050 \
-            /bin/sh -c "lighthouse-badges --save-report --single-badge --badge-style flat --urls https://rahil-p.com"
+          npx --yes lighthouse-badges \
+            --save-report \
+            --single-badge \
+            --badge-style flat \
+            --urls https://rahil-p.com \
+            --output-path ${{ github.workspace }}/audits/lighthouse
       - name: Upload Badges
         uses: actions/upload-artifact@v3
         with:
