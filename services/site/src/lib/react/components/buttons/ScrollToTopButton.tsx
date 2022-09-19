@@ -43,7 +43,7 @@ export default function ScrollToTopButton(props: Props) {
 					}
 
 					&:hover {
-						color: ${theme.colors.accent.alt0};
+						color: ${theme.colors.accent.interactive0};
 					}
 				`,
 				cssExtra,

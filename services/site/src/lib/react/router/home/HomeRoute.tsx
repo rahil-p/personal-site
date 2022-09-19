@@ -2,20 +2,37 @@ import { css } from '@emotion/react';
 
 import SetMeta from '../../components/utils/SetMeta';
 import Main from '../../components/view/Main';
-import IntroBanner from './intro/IntroBanner';
-import ProjectsBanner from './project/ProjectsBanner';
+import IntroContent from './intro/IntroContent';
+import ProjectsContent from './project/ProjectsContent';
 import Footer from '../../components/view/Footer';
+import ResearchContent from './research/ResearchContent';
+import GeneralContent from './general/GeneralContent';
 
 export default function HomeRoute() {
 	return (
 		<>
 			<SetMeta
-				description={"I'm a software engineer. Let's build something meaningful together."}
-				title={'Rahil Patel'}
+				description={"Let's build something meaningful together."}
+				title={'Rahil Patel • Software Engineer'}
 			/>
-			<Main>
-				<IntroBanner />
-				<ProjectsBanner />
+			<Main
+				cssExtra={css`
+					& > :not(:first-child) {
+						--vertical-margin: clamp(10rem, calc(var(--padding-h-main) * 4), 15rem);
+
+						margin-top: var(--vertical-margin);
+						margin-bottom: var(--vertical-margin);
+					}
+
+					& > :nth-child(2) {
+						margin-top: clamp(6.25rem, calc(var(--padding-h-main) * 2.5), 9.375rem);
+					}
+				`}
+			>
+				<IntroContent />
+				<ProjectsContent />
+				<ResearchContent />
+				<GeneralContent />
 			</Main>
 			<Footer
 				cssExtra={css`

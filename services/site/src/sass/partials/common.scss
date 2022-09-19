@@ -23,10 +23,16 @@ html,
 body {
 	font-family: _is, sans-serif;
 	color: #ffffff;
-	background-color: #000000;
+	background-color: #131517;
 	scrollbar-color: light;
 }
 
 body {
 	min-width: 250px;
+	text-underline-offset: 0.15em;
+}
+
+::selection {
+	color: #000000;
+	background: #ccd6f6;
 }

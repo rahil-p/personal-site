@@ -99,7 +99,7 @@ export default function Footer(props: Props) {
 			</div>
 			<SocialNav
 				css={css`
-					font-size: 1.125em;
+					font-size: 1.25em;
 				`}
 			/>
 		</footer>

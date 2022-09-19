@@ -293,6 +293,7 @@ module.exports = {
 			chunks: ['style', 'core', 'router'],
 			exclude: [/\.map$/, /^manifest.*\.js$/, /images\//],
 			dontCacheBustURLsMatching: /\.[0-z]{6}\.(js|css)/,
+			maximumFileSizeToCacheInBytes: 2.5e6,
 		}),
 		/* Configures a Sentry release */
 		...(process.env.SENTRY_AUTH_TOKEN

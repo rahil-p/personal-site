@@ -6,7 +6,7 @@ import { useMetaTemplate } from '../../../hooks/dom';
 import EmailGraphic from '../../../../../public/images/ui/email.svg';
 import IntroHeading from './IntroHeading';
 
-export default function IntroBanner() {
+export default function IntroContent() {
 	const theme = useTheme();
 
 	const meta = useMetaTemplate();
@@ -60,13 +60,7 @@ export default function IntroBanner() {
 							<CommentText>Cloud</CommentText>
 						</aside>
 					</div>
-					<p
-						css={css`
-							font-size: clamp(0.925em, 1.325vw, 1em);
-						`}
-					>
-						I enjoy designing solutions and making them happen with code.
-					</p>
+					<p>I apply design thinking to build modern and flexible services for software.</p>
 				</div>
 			</div>
 			<SocialNav

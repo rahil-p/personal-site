@@ -131,8 +131,8 @@ export default function BlobsCanvasAnimation(props: Props) {
 	);
 
 	// Update fill styles on theme change
-	animationController2.current.fillStyle = theme.colors.accent.blobG;
-	animationController1.current.fillStyle = theme.colors.accent.blobR;
+	animationController2.current.fillStyle = theme.colors.accent.blobR;
+	animationController1.current.fillStyle = theme.colors.accent.blobG;
 	animationController3.current.fillStyle = theme.colors.accent.blobB;
 
 	const [canvasSize, setCanvasSize] = useState(1000);

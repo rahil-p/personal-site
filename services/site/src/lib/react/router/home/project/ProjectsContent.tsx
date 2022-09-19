@@ -13,18 +13,14 @@ import {
 import { ProjectsContext, ProjectsGroup, useProjectsDispatch } from '../../../hooks/projects';
 import BlobsCanvasAnimation from '../../../components/graphics/BlobsCanvasAnimation';
 
-export default function ProjectsBanner() {
+export default function ProjectsContent() {
 	const projectsDispatch = useProjectsDispatch();
 
 	return (
 		<div
 			css={css`
-				--margin-top: max(calc(var(--padding-h-main) * 2), 5rem);
-
 				position: relative;
 				display: flex;
-				margin-top: var(--margin-top);
-				margin-bottom: calc(var(--margin-top) * 1.25);
 			`}
 		>
 			<div
@@ -79,7 +75,7 @@ export default function ProjectsBanner() {
 								<ProjectCardForProduct
 									unreleased
 									description={
-										'Multiplayer game client, game server, matchmaker service, and backend API'
+										'Multiplayer game client, game server, matchmaker service, and backing APIs'
 									}
 									frameworks={[
 										FrameworkLanguages.C_SHARP,
@@ -89,7 +85,7 @@ export default function ProjectsBanner() {
 										FrameworkCloudPlatforms.GCP,
 									]}
 									group={group}
-									name={'Blitz Arena'}
+									name={'Drift Arena'}
 								/>
 							</ProjectsSection>
 						);
@@ -102,6 +98,7 @@ export default function ProjectsBanner() {
 									frameworks={[
 										FrameworkLanguages.TYPESCRIPT,
 										FrameworkAPIs.NODE,
+										FrameworkAPIs.EXPRESS,
 										FrameworkDatabases.REDIS,
 										FrameworkLanguages.LUA,
 									]}

@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react';
 
 import { ProjectsGroup, useProjects } from '../../../hooks/projects';
+import ContentHeading from '../../../components/layout/ContentHeading';
 
 import type ProjectCardForProduct from './ProjectCardForProduct';
 import type ProjectCardForRepository from './ProjectCardForRepository';
@@ -32,7 +33,7 @@ export default function ProjectsSection(props: Props) {
 				--projects-section-ease-fn: ease-in-out;
 			`}
 		>
-			<h2
+			<ContentHeading
 				className={(() => {
 					const classes = ['projects-section__title'];
 					if (isGroupDimmed(group)) {
@@ -42,24 +43,21 @@ export default function ProjectsSection(props: Props) {
 					}
 					return classes.join(' ');
 				})()}
-				css={css`
+				cssExtra={css`
 					width: fit-content;
 					padding-bottom: 0.625em;
 					margin-right: var(--padding-h-main);
 					margin-bottom: 0;
 					margin-left: auto;
-					font-size: clamp(1.5rem, 4vw, 1.8rem);
-					color: ${theme.colors.main.color};
 					text-align: right;
-					cursor: default;
 					transition: color var(--projects-section-ease-time) var(--projects-section-ease-fn);
 
 					&.projects-section__title--dim {
-						color: ${theme.colors.main.colorDim};
+						color: ${theme.colors.main.colorDimTint};
 					}
 
 					&.projects-section__title--focus {
-						color: ${theme.colors.accent.main0};
+						color: ${theme.colors.accent.interactive1};
 					}
 				`}
 				onMouseEnter={() => {
@@ -70,7 +68,7 @@ export default function ProjectsSection(props: Props) {
 				}}
 			>
 				{groupHeadings[group]}
-			</h2>
+			</ContentHeading>
 			<div
 				css={css`
 					display: flex;

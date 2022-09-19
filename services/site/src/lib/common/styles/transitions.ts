@@ -19,7 +19,7 @@ export const fadeTransitionStyle = css`
 	}
 
 	&.fade-exit-active {
-		opacity: 0.01;
+		opacity: 0;
 		transition: opacity calc(var(--ease-time) * var(--transition-speed-multiplier)) var(--ease-fn-inverse);
 	}
 `;

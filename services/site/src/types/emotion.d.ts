@@ -9,12 +9,16 @@ declare module '@emotion/react' {
 				backgroundAltSoft: string;
 				color: string;
 				colorDim: string;
+				colorDimTint: string;
 				colorSoft: string;
 				colorSofter: string;
 			};
 			accent: {
-				main0: string;
-				alt0: string;
+				interactive0: string;
+				interactive1: string;
+				highlight0: string;
+				highlight1: string;
+				error: string;
 				blobR: string;
 				blobG: string;
 				blobB: string;

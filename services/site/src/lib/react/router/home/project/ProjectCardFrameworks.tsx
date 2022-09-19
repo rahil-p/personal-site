@@ -1,4 +1,6 @@
-import { css, useTheme } from '@emotion/react';
+import { css } from '@emotion/react';
+
+import InlineList from '../../../components/layout/InlineList';
 
 import type { ComponentPropsWithoutRef } from 'react';
 import type { CSSExtra } from '../../../../common/types';
@@ -54,30 +56,8 @@ interface Props extends ComponentPropsWithoutRef<'ul'> {
 export default function ProjectCardFrameworks(props: Props) {
 	const { frameworks, cssExtra, ...delegatedProps } = props;
 
-	const theme = useTheme();
-
-	// const [reveal] = useState(false);
-
 	return (
-		<ul
-			css={[
-				css`
-					display: flex;
-					flex-direction: row;
-					flex-wrap: wrap;
-					column-gap: 1.5em;
-					padding: 0;
-					margin: 0;
-					font-family: _dm, monospace;
-					font-size: clamp(0.8rem, 2.325vw, 0.875rem);
-					color: ${theme.colors.main.colorSoft};
-					transition: height var(--ease-time) var(--ease-fn);
-				`,
-				cssExtra,
-			]}
-			role={'list'}
-			{...delegatedProps}
-		>
+		<InlineList cssExtra={cssExtra} items={frameworks.map(el => [el, el])} role={'list'} {...delegatedProps}>
 			{frameworks.map(framework => {
 				return (
 					<li
@@ -90,6 +70,6 @@ export default function ProjectCardFrameworks(props: Props) {
 					</li>
 				);
 			})}
-		</ul>
+		</InlineList>
 	);
 }

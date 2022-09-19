@@ -25,7 +25,7 @@ export const socialAnchorStyle = (theme: Theme) => css`
 	}
 
 	&:hover {
-		color: ${theme.colors.accent.alt0};
+		color: ${theme.colors.accent.interactive0};
 	}
 `;
 

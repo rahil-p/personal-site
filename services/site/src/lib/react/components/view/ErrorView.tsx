@@ -30,7 +30,7 @@ export default function ErrorView(props: Props) {
 					css={css`
 						font-size: max(min(20vw, 20vh), 1.75rem);
 						line-height: 1;
-						color: ${theme.colors.accent.main0};
+						color: ${theme.colors.accent.error};
 						letter-spacing: 0.08em;
 
 						@media (max-width: 250px) {
