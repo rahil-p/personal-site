@@ -16,8 +16,8 @@ export enum FrameworkLanguages {
 
 export enum FrameworkAPIs {
 	NODE = 'Node.js',
-	EXPRESS = 'Express.js',
-	REACT = 'React.js',
+	EXPRESS = 'Express',
+	REACT = 'React',
 	WEBPACK = 'Webpack',
 	UNITY = 'Unity',
 	GRPC = 'gRPC',

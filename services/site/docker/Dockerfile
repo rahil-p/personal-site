@@ -51,7 +51,7 @@ WORKDIR /var/www
 
 COPY --from=pre_bundle /var/www .
 
-RUN find . -regex '.*\.\(xml\|txt\|css\|js\|json\|map\|webmanifest\|wasm\|data\|svg\|ico\|otf\|ttf\)$' \
+RUN find . -regex '.*\.\(xml\|txt\|css\|js\|json\|map\|webmanifest\|wasm\|data\|svg\|otf\|ttf\)$' \
       -exec brotli --verbose --keep --best {} ';'
 
 
