@@ -6,7 +6,7 @@ html(lang='en' dir='ltr')
 		include ../components/google-tagmanager-script
 		meta(name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover')
 
-		title #{page.title ? `${page.title} · ${app.name}` : app.name}
+		title #{page.title || app.name}
 		if page.description
 			meta(name='description' content=page.description)
 
