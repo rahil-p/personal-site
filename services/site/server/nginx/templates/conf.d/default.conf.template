@@ -47,7 +47,7 @@ server {
         try_files                       $uri $uri/ $uri.html /index.html;
     }
 
-    location ^~ /_/ {
+    location ^~ /-/ {
         expires                         epoch;
         include                         /etc/nginx/partials/default-headers.conf;
         include                         /etc/nginx/partials/csp-headers.conf;

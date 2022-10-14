@@ -286,7 +286,7 @@ module.exports = {
 				},
 				{
 					from: 'src/private/resources',
-					to: '_',
+					to: '-',
 				},
 			],
 		}),
