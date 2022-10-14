@@ -284,6 +284,10 @@ module.exports = {
 					from: 'src/public/images/app',
 					to: 'images/app',
 				},
+				{
+					from: 'src/private/resources',
+					to: '_',
+				},
 			],
 		}),
 		/* Plugins for compiling service worker files with configured precache URLs */

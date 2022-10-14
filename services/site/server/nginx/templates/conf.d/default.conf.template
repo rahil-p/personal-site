@@ -47,6 +47,15 @@ server {
         try_files                       $uri $uri/ $uri.html /index.html;
     }
 
+    location ^~ /_/ {
+        expires                         epoch;
+        include                         /etc/nginx/partials/default-headers.conf;
+        include                         /etc/nginx/partials/csp-headers.conf;
+        add_header                      X-Robots-Tag                'noindex, nofollow, nosnippet, noarchive';
+
+        try_files                       $uri $uri/ $uri.html /index.html;
+    }
+
     # handles the service worker for the site (should not be versioned with a hash)
     location = /scripts/service-worker.js {
         expires                         epoch; # never cached
