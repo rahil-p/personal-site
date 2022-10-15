@@ -55,9 +55,7 @@ export default function IntroContent() {
 								font-size: 0.85em;
 							`}
 						>
-							<CommentText>Web</CommentText>
-							<CommentText>Games</CommentText>
-							<CommentText>Cloud</CommentText>
+							<CommentText>vol. 1</CommentText>
 						</aside>
 					</div>
 					<p>I apply design thinking to build modern and flexible services for software.</p>
