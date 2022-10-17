@@ -55,10 +55,13 @@ export default function IntroContent() {
 								font-size: 0.85em;
 							`}
 						>
-							<CommentText>vol. 1</CommentText>
+							<CommentText data-nosnippet />
 						</aside>
 					</div>
-					<p>I apply design thinking to build modern and flexible services for software.</p>
+					<p>
+						I enjoy using creativity, collaboration, and code to build simple solutions for complex
+						problems.
+					</p>
 				</div>
 			</div>
 			<SocialNav

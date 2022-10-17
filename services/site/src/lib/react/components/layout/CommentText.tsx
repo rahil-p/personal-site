@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { CSSExtra } from '../../../common/types';
 
 interface Props extends ComponentPropsWithoutRef<'span'> {
-	children: ReactNode;
+	children?: ReactNode;
 	cssExtra?: CSSExtra;
 }
 
@@ -22,12 +22,12 @@ export default function CommentText(props: Props) {
 						color: ${theme.colors.main.color};
 						user-select: none;
 
-						&::after {
+						&:not(:only-child)::after {
 							content: '\\2000';
 						}
 					}
 
-					& > span:last-of-type {
+					& > span:last-of-type:not(:only-child) {
 						font-family: _dm, monospace;
 						font-weight: 300;
 						color: ${theme.colors.main.colorSoft};
@@ -38,7 +38,7 @@ export default function CommentText(props: Props) {
 			{...delegatedProps}
 		>
 			<span>{'//'}</span>
-			<span>{children}</span>
+			{children ? <span>{children}</span> : null}
 		</span>
 	);
 }
